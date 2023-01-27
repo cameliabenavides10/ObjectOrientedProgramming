@@ -3,6 +3,7 @@ const fs = require('fs');
 
 inquirer
 .prompt([
+    // would you like to add an intern, manager, or intern
     {
         type: 'input',
         name: 'name',
@@ -45,21 +46,21 @@ inquirer
     console.log(data);
     var myHTML = `
     <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-        <h1> ${data.name} </h1>
-        <h1> ${data.location} </h1>
-        <h1> ${data.bio} </h1>
-        <h1> ${data.linkedin} </h1>
-        <h1> ${data.github} </h1>
-    </body>
-    </html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>My Team</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+</body>
+<script src="https://kit.fontawesome.com/c502137733.js"></script>
+</html>
     `
     fs.writeFile("profile.html", myHTML, (err) =>
     err ? console.log(err) : console.log('Success!')
