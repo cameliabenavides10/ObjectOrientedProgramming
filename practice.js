@@ -116,6 +116,7 @@ function startApp(){
         // console.log(data);
         // var myHTML = `
         // `
+        
         function myHTML (){
         fs.writeFileSync("profile.html", generateTemplate(teamArray)
         // , (err) =>
