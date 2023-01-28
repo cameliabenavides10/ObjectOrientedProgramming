@@ -51,20 +51,8 @@ function managerCard() { inquirer
         }
     ])
     .then((data) => {
-        class Manager extends Employee {
-            constructor(officeNumber, employeeName, email, id){
-                super(employeeName, email, id)
-                this.officeNumber= officeNumber
-                
-            };
-            getOfficeNumber(){
-                return this.officeNumber;
-            };
-            getRole(){
-                return "Manager";
-            };
-        }
-    const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOffice);   
+    const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOffice);  
+    theTeam.push(manager); 
 });
 
 }
@@ -95,19 +83,6 @@ function managerCard() { inquirer
             }
         ])
         .then(data => {
-            class Engineer extends Employee {
-                constructor(employeeName, email, id, github){
-                    super(employeeName, email, id)
-                    this.github= github
-                    
-                };
-                getGithub(){
-                    return this.github;
-                };
-                getRole(){
-                    return "Engineer";
-                }
-            }
             const engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub)
         })
 
