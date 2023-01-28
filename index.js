@@ -161,7 +161,7 @@ function startApp() {
     //             <div class="row">
     //                 <div class="row team-area col-12 d-flex justify-content-center">`
 
-    //         if (employee.getRole === "Manager"){
+    //         if (manager){
                
     //                 `<div class="card employee-card">
     //                 <div class="card-header bg-primary text-white">
@@ -171,36 +171,36 @@ function startApp() {
     //                 <div class="card-body">
     //                     <ul class="list-group">
     //                         <li class="list-group-item" id="manager-id">${manager.id}</li>
-    //                         <li class="list-group-item" id="manager-email">Email: <a href="mailto:bigboss@gmail.com">bigboss@gmail.com</a></li>
-    //                         <li class="list-group-item" id="manager-office">Office number: 512-459-2222</li>
+    //                         <li class="list-group-item" id="manager-email">Email: <a href="mailto:${manager.email}">${manager.email}</a></li>
+    //                         <li class="list-group-item" id="manager-office">${manager.officeNumber}</li>
     //                     </ul>
     //                 </div>
     //             </div>`
     //             } else if(data.role === "Engineer") {
     //         `<div class="card employee-card">
     //         <div class="card-header bg-primary text-white">
-    //             <h2 class="card-title">Tits Maghee</h2>
-    //             <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>Intern</h3>
+    //             <h2 class="card-title">${engineer.employeeName}</h2>
+    //             <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>Engineer</h3>
     //         </div>
     //         <div class="card-body">
     //             <ul class="list-group">
-    //                 <li class="list-group-item">ID: 8008</li>
-    //                 <li class="list-group-item">Email: <a href="mailto:tits@gmail.com">tits@gmail.com</a></li>
-    //                 <li class="list-group-item">School: TCU</li>
+    //                 <li class="list-group-item">${engineer.id}</li>
+    //                 <li class="list-group-item">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></li>
+    //                 <li class="list-group-item">GitHub username: ${engineer.github}</li>
     //             </ul>
     //         </div>
     //     </div>`
     //     } else if (data.role === "Intern") {
     //         `<div class="card employee-card">
     //     <div class="card-header bg-primary text-white">
-    //         <h2 class="card-title">Tits Maghee</h2>
+    //         <h2 class="card-title">${intern.employeeName}</h2>
     //         <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>Intern</h3>
     //     </div>
     //     <div class="card-body">
     //         <ul class="list-group">
-    //             <li class="list-group-item">ID: 8008</li>
-    //             <li class="list-group-item">Email: <a href="mailto:tits@gmail.com">tits@gmail.com</a></li>
-    //             <li class="list-group-item">School: TCU</li>
+    //             <li class="list-group-item">${intern.id}</li>
+    //             <li class="list-group-item">Email: <a href="mailto:${intern.email}">${intern.email}</a></li>
+    //             <li class="list-group-item">School: ${intern.schoolName}</li>
     //         </ul>
     //     </div>
     // </div>`
