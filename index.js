@@ -6,7 +6,6 @@ const Intern = require('./lib/Intern');
 
 inquirer
     .prompt([
-        // would you like to add an intern, manager, or intern
         {
             type: 'list',
             name: 'role',
@@ -15,54 +14,54 @@ inquirer
         }
     ])
 
-
-
 .then((data) => {
     if (data.role === "Manager") {
+       
         inquirer
             .prompt([
                 {
                     type: 'input',
-                    name: 'name',
+                    name: 'managerName',
                     message: 'What is the employee name?',
                 },
                 {
                     type: 'input',
-                    name: 'id',
+                    name: 'managerId',
                     message: 'Enter employee ID: ',
                 },
                 {
                     type: 'input',
-                    name: 'email',
+                    name: 'managerEmail',
                     message: 'Enter employee email: ',
                 },
                 {
                     type: 'input',
-                    name: 'office',
+                    name: 'managerOffice',
                     message: 'If manager, please enter office number: ',
                 }
             ])
+            
     } else if (data.role === "Engineer") {
         inquirer
             .prompt([
                 {
                     type: 'input',
-                    name: 'name',
+                    name: 'engineerName',
                     message: 'What is the employee name?',
                 },
                 {
                     type: 'input',
-                    name: 'id',
+                    name: 'engineerId',
                     message: 'Enter employee ID: ',
                 },
                 {
                     type: 'input',
-                    name: 'email',
+                    name: 'engineerEmail',
                     message: 'Enter employee email: ',
                 },
                 {
                     type: 'input',
-                    name: 'github',
+                    name: 'engineerGithub',
                     message: 'Please enter github username: ',
                 }
             ])
@@ -71,36 +70,39 @@ inquirer
             .prompt([
                 {
                     type: 'input',
-                    name: 'name',
+                    name: 'internName',
                     message: 'What is the employee name?',
                 },
                 {
                     type: 'input',
-                    name: 'id',
+                    name: 'internId',
                     message: 'Enter employee ID: ',
                 },
                 {
                     type: 'input',
-                    name: 'email',
+                    name: 'internEmail',
                     message: 'Enter employee email: ',
                 },
                 {
                     type: 'input',
-                    name: 'school',
+                    name: 'internSchool',
                     message: 'If intern, please enter school name: ',
                 }
             ])
     }
     console.log(data);
     var myHTML = `
-    const manager = new Manager(
-        answers.managerName,
-        answers.managerId,
-        answers.managerEmail,
-        answers.managerOfficeNumber
-      );
     `
+    
+    
     fs.writeFile("profile.html", myHTML, (err) =>
-    err ? console.log(err) : console.log('Success!')
+    err ? console.log(err) : console.log('')
     );
+
+    
 });
+
+
+
+
+  
