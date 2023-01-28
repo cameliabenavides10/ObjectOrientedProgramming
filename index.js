@@ -7,6 +7,8 @@ const Intern = require('./lib/intern');
 let theTeam = [];
 
 
+function startApp(){
+function intTeam(){
 inquirer
     .prompt([
         {
@@ -24,7 +26,7 @@ inquirer
         return internCard()
     }
 })
-    
+};
     // else{create HTML}
 
 function managerCard() { inquirer
@@ -53,6 +55,7 @@ function managerCard() { inquirer
     .then((data) => {
     const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOffice);  
     theTeam.push(manager); 
+    intTeam();
 });
 
 }
@@ -83,7 +86,9 @@ function managerCard() { inquirer
             }
         ])
         .then(data => {
-            const engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub)
+            const engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub);
+            theTeam.push(engineer);
+            intTeam();
         })
 
 }
@@ -113,10 +118,14 @@ function managerCard() { inquirer
         ])
         .then((data) => {
             const intern = new Intern(data.internName, data.internEmail, data.internId,  data.internSchool);
+            theTeam.push(intern);
+            intTeam();
         })
 
        }
-      
+       intTeam();
+    };
+    startApp();
     // console.log(data);
     // var myHTML = `
     // `
