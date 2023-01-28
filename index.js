@@ -1,8 +1,11 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const Employee = require("./lib/employee");
 const Manager = require('./lib/Manager');
-const Engineer = require('./lib/Engineer');
-const Intern = require('./lib/Intern');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
+let theTeam = [];
+
 
 inquirer
     .prompt([
@@ -10,99 +13,140 @@ inquirer
             type: 'list',
             name: 'role',
             message: 'Please choose employee role: ',
-            choices: ["Manager", "Engineer", "Intern"]
+            choices: ["Manager", "Engineer", "Intern", "Done"]
+        }
+    ]).then(function(data){
+    if(data.role==="Manager"){
+        return managerCard()
+    }else if(data.role === "Engineer"){
+        return engineerCard()
+    } else if (data.role=== "Intern"){
+        return internCard()
+    }
+})
+    
+    // else{create HTML}
+
+function managerCard() { inquirer
+    .prompt([
+        {
+            type: 'input',
+            name: 'managerName',
+            message: 'What is the employee name?',
+        },
+        {
+            type: 'input',
+            name: 'managerId',
+            message: 'Enter employee ID: ',
+        },
+        {
+            type: 'input',
+            name: 'managerEmail',
+            message: 'Enter employee email: ',
+        },
+        {
+            type: 'input',
+            name: 'managerOffice',
+            message: 'If manager, please enter office number: ',
         }
     ])
-
-.then((data) => {
-    if (data.role === "Manager") {
-       
-        inquirer
-            .prompt([
-                {
-                    type: 'input',
-                    name: 'managerName',
-                    message: 'What is the employee name?',
-                },
-                {
-                    type: 'input',
-                    name: 'managerId',
-                    message: 'Enter employee ID: ',
-                },
-                {
-                    type: 'input',
-                    name: 'managerEmail',
-                    message: 'Enter employee email: ',
-                },
-                {
-                    type: 'input',
-                    name: 'managerOffice',
-                    message: 'If manager, please enter office number: ',
-                }
-            ])
-            
-    } else if (data.role === "Engineer") {
-        inquirer
-            .prompt([
-                {
-                    type: 'input',
-                    name: 'engineerName',
-                    message: 'What is the employee name?',
-                },
-                {
-                    type: 'input',
-                    name: 'engineerId',
-                    message: 'Enter employee ID: ',
-                },
-                {
-                    type: 'input',
-                    name: 'engineerEmail',
-                    message: 'Enter employee email: ',
-                },
-                {
-                    type: 'input',
-                    name: 'engineerGithub',
-                    message: 'Please enter github username: ',
-                }
-            ])
-    } else if (data.role === "Intern") {
-        inquirer
-            .prompt([
-                {
-                    type: 'input',
-                    name: 'internName',
-                    message: 'What is the employee name?',
-                },
-                {
-                    type: 'input',
-                    name: 'internId',
-                    message: 'Enter employee ID: ',
-                },
-                {
-                    type: 'input',
-                    name: 'internEmail',
-                    message: 'Enter employee email: ',
-                },
-                {
-                    type: 'input',
-                    name: 'internSchool',
-                    message: 'If intern, please enter school name: ',
-                }
-            ])
-    }
-    console.log(data);
-    var myHTML = `
-    `
-    
-    
-    fs.writeFile("profile.html", myHTML, (err) =>
-    err ? console.log(err) : console.log('')
-    );
-
-    
+    .then((data) => {
+        class Manager extends Employee {
+            constructor(officeNumber, employeeName, email, id){
+                super(employeeName, email, id)
+                this.officeNumber= officeNumber
+                
+            };
+            getOfficeNumber(){
+                return this.officeNumber;
+            };
+            getRole(){
+                return "Manager";
+            };
+        }
+    const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOffice);   
 });
 
+}
 
+   
+       function engineerCard(){
+        inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'engineerName',
+                message: 'What is the employee name?',
+            },
+            {
+                type: 'input',
+                name: 'engineerId',
+                message: 'Enter employee ID: ',
+            },
+            {
+                type: 'input',
+                name: 'engineerEmail',
+                message: 'Enter employee email: ',
+            },
+            {
+                type: 'input',
+                name: 'engineerGithub',
+                message: 'Please enter github username: ',
+            }
+        ])
+        .then(data => {
+            class Engineer extends Employee {
+                constructor(employeeName, email, id, github){
+                    super(employeeName, email, id)
+                    this.github= github
+                    
+                };
+                getGithub(){
+                    return this.github;
+                };
+                getRole(){
+                    return "Engineer";
+                }
+            }
+            const engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub)
+        })
 
+}
+       function internCard(){
+        inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'internName',
+                message: 'What is the employee name?',
+            },
+            {
+                type: 'input',
+                name: 'internId',
+                message: 'Enter employee ID: ',
+            },
+            {
+                type: 'input',
+                name: 'internEmail',
+                message: 'Enter employee email: ',
+            },
+            {
+                type: 'input',
+                name: 'internSchool',
+                message: 'If intern, please enter school name: ',
+            }
+        ])
+        .then((data) => {
+            const intern = new Intern(data.internName, data.internEmail, data.internId,  data.internSchool);
+        })
 
-  
+       }
+      
+    // console.log(data);
+    // var myHTML = `
+    // `
+    
+    
+    // fs.writeFile("profile.html", myHTML, (err) =>
+    // err ? console.log(err) : console.log('')
+    // );
