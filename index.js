@@ -25,9 +25,12 @@ function startApp() {
                 } else if (data.role === "Intern") {
                     return internCard()
                 }
+                else {
+                    return makeHTML();
+                }
             })
     };
-    // else{create HTML}
+  
 
     function managerCard() {
         inquirer
@@ -56,8 +59,8 @@ function startApp() {
             .then((data) => {
                 const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOffice);
                 theTeam.push(manager);
-                console.log(manager);
-                console.log(manager.getRole)
+                
+                console.log(theTeam)
                 console.log(manager.email)
                 intTeam();
             });
@@ -92,6 +95,7 @@ function startApp() {
             .then(data => {
                 const engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerGithub);
                 theTeam.push(engineer);
+                console.log(theTeam)
                 intTeam();
             })
 
@@ -129,13 +133,39 @@ function startApp() {
     }
     intTeam();
 
-    // function makeHTML() {
-    //     fs.writeFileSync("profile.html", generateTemplate(theTeam), (err) =>
-    //         err ? console.log(err) : console.log('')
-    //     )
-    // };
+    function makeHTML() {
+        fs.writeFile("profile.html", generateTemplate(theTeam), (err) =>
+            err ? console.log(err) : console.log('')
+        )
+    };
 
-    // function generateTemplate() {
+    function generateTemplate() {
+        const newManager = theTeam.filter(function(workers){
+            return workers.employeeName, 
+             workers.email,
+             workers.id,
+             workers.officeNumber;
+        })
+
+
+
+
+//         const newManager = theTeam.filter(filterFunction);
+//         function filterFunction(element){
+//             return (element === "Manager")
+           
+//         };
+//         const newEngineer = theTeam.filter(filterFunction2);
+//         function filterFunction2(element){
+//             return (element=== "Engineer")
+//         };
+//         const newIntern = theTeam.filter(filterFunction3)
+//         function filterFunction3(element){
+//             return (element==="Intern")
+// ;        }
+console.log(newManager);
+
+        
 
     //     `<!DOCTYPE html>
     //     <html lang="en">
@@ -161,53 +191,53 @@ function startApp() {
     //             <div class="row">
     //                 <div class="row team-area col-12 d-flex justify-content-center">`
 
-    //         if (manager){
+    //         if (newManager){
                
     //                 `<div class="card employee-card">
     //                 <div class="card-header bg-primary text-white">
-    //                     <h2 class="card-title" id="change-manager">${manager.employeeName}</h2>
+    //                     <h2 class="card-title" id="change-manager">${newManager.employeeName}</h2>
     //                     <h3 class="card-title" id="manager-role"><i class="fas fa-mug-hot mr-2"></i>Manager</h3>
     //                 </div>
     //                 <div class="card-body">
     //                     <ul class="list-group">
-    //                         <li class="list-group-item" id="manager-id">${manager.id}</li>
-    //                         <li class="list-group-item" id="manager-email">Email: <a href="mailto:${manager.email}">${manager.email}</a></li>
-    //                         <li class="list-group-item" id="manager-office">${manager.officeNumber}</li>
+    //                         <li class="list-group-item" id="manager-id">${newManager.id}</li>
+    //                         <li class="list-group-item" id="manager-email">Email: <a href="mailto:${newManager.email}">${newManager.email}</a></li>
+    //                         <li class="list-group-item" id="manager-office">${newManager.officeNumber}</li>
     //                     </ul>
     //                 </div>
     //             </div>`
-    //             } else if(data.role === "Engineer") {
+    //             } else if(newEngineer) {
     //         `<div class="card employee-card">
     //         <div class="card-header bg-primary text-white">
-    //             <h2 class="card-title">${engineer.employeeName}</h2>
+    //             <h2 class="card-title">${newEngineer.employeeName}</h2>
     //             <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>Engineer</h3>
     //         </div>
     //         <div class="card-body">
     //             <ul class="list-group">
-    //                 <li class="list-group-item">${engineer.id}</li>
-    //                 <li class="list-group-item">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></li>
-    //                 <li class="list-group-item">GitHub username: ${engineer.github}</li>
+    //                 <li class="list-group-item">${newEngineer.id}</li>
+    //                 <li class="list-group-item">Email: <a href="mailto:${newEngineer.email}">${newEngineer.email}</a></li>
+    //                 <li class="list-group-item">GitHub username: ${newEngineer.github}</li>
     //             </ul>
     //         </div>
     //     </div>`
-    //     } else if (data.role === "Intern") {
+    //     } else if (newIntern) {
     //         `<div class="card employee-card">
     //     <div class="card-header bg-primary text-white">
-    //         <h2 class="card-title">${intern.employeeName}</h2>
+    //         <h2 class="card-title">${newIntern.employeeName}</h2>
     //         <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>Intern</h3>
     //     </div>
     //     <div class="card-body">
     //         <ul class="list-group">
-    //             <li class="list-group-item">${intern.id}</li>
-    //             <li class="list-group-item">Email: <a href="mailto:${intern.email}">${intern.email}</a></li>
-    //             <li class="list-group-item">School: ${intern.schoolName}</li>
+    //             <li class="list-group-item">${newIntern.id}</li>
+    //             <li class="list-group-item">Email: <a href="mailto:${newIntern.email}">${newIntern.email}</a></li>
+    //             <li class="list-group-item">School: ${newIntern.schoolName}</li>
     //         </ul>
     //     </div>
     // </div>`
     //     }
 
 
-    // }
+    }
 
 
 
