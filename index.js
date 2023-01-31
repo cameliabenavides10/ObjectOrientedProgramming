@@ -4,6 +4,7 @@ const Employee = require("./lib/employee");
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
+const generateHTML=require("./src/generateHTML");
 let theTeam = [];
 
 
@@ -133,116 +134,17 @@ function startApp() {
     }
     intTeam();
 
-    function makeHTML() {
-        fs.writeFile("profile.html", generateTemplate(theTeam), (err) =>
-            err ? console.log(err) : console.log('')
-        )
-    };
+   function makeHTML(){
+    fs.writeFileSync("team.html", generateHTML(theTeam))
 
-    function generateTemplate() {
-        const newManager = theTeam.filter(function(workers){
-            return workers.employeeName, 
-             workers.email,
-             workers.id,
-             workers.officeNumber;
-        })
-
-
-
-
-//         const newManager = theTeam.filter(filterFunction);
-//         function filterFunction(element){
-//             return (element === "Manager")
-           
-//         };
-//         const newEngineer = theTeam.filter(filterFunction2);
-//         function filterFunction2(element){
-//             return (element=== "Engineer")
-//         };
-//         const newIntern = theTeam.filter(filterFunction3)
-//         function filterFunction3(element){
-//             return (element==="Intern")
-// ;        }
-console.log(newManager);
-
-        
-
-    //     `<!DOCTYPE html>
-    //     <html lang="en">
-    //     <head>
-    //         <meta charset="UTF-8" />
-    //         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    //         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    //         <title>My Team</title>
-    //         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    //             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    //         <link rel="stylesheet" href="style.css">
-    //         <script src="https://kit.fontawesome.com/c502137733.js"></script>
-    //     </head>
-    //     <body>
-    //         <div class="container-fluid">
-    //             <div class="row">
-    //                 <div class="col-12 jumbotron mb-3 team-heading bg-danger">
-    //                     <h1 class="text-center text-white">My Team</h1>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //         <div class="container">
-    //             <div class="row">
-    //                 <div class="row team-area col-12 d-flex justify-content-center">`
-
-    //         if (newManager){
-               
-    //                 `<div class="card employee-card">
-    //                 <div class="card-header bg-primary text-white">
-    //                     <h2 class="card-title" id="change-manager">${newManager.employeeName}</h2>
-    //                     <h3 class="card-title" id="manager-role"><i class="fas fa-mug-hot mr-2"></i>Manager</h3>
-    //                 </div>
-    //                 <div class="card-body">
-    //                     <ul class="list-group">
-    //                         <li class="list-group-item" id="manager-id">${newManager.id}</li>
-    //                         <li class="list-group-item" id="manager-email">Email: <a href="mailto:${newManager.email}">${newManager.email}</a></li>
-    //                         <li class="list-group-item" id="manager-office">${newManager.officeNumber}</li>
-    //                     </ul>
-    //                 </div>
-    //             </div>`
-    //             } else if(newEngineer) {
-    //         `<div class="card employee-card">
-    //         <div class="card-header bg-primary text-white">
-    //             <h2 class="card-title">${newEngineer.employeeName}</h2>
-    //             <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>Engineer</h3>
-    //         </div>
-    //         <div class="card-body">
-    //             <ul class="list-group">
-    //                 <li class="list-group-item">${newEngineer.id}</li>
-    //                 <li class="list-group-item">Email: <a href="mailto:${newEngineer.email}">${newEngineer.email}</a></li>
-    //                 <li class="list-group-item">GitHub username: ${newEngineer.github}</li>
-    //             </ul>
-    //         </div>
-    //     </div>`
-    //     } else if (newIntern) {
-    //         `<div class="card employee-card">
-    //     <div class="card-header bg-primary text-white">
-    //         <h2 class="card-title">${newIntern.employeeName}</h2>
-    //         <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>Intern</h3>
-    //     </div>
-    //     <div class="card-body">
-    //         <ul class="list-group">
-    //             <li class="list-group-item">${newIntern.id}</li>
-    //             <li class="list-group-item">Email: <a href="mailto:${newIntern.email}">${newIntern.email}</a></li>
-    //             <li class="list-group-item">School: ${newIntern.schoolName}</li>
-    //         </ul>
-    //     </div>
-    // </div>`
-    //     }
-
+   }
 
     }
 
 
 
 
-};
+
 startApp();
 
 
