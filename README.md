@@ -1,20 +1,15 @@
 # ObjectOrientedProgramming
-License: MIT
+License: MIT (https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 
 # Table of Contents
-Description
-
-Installation
-
-Usage
-
-License
-
-Contributing
-
-Tests
-
-Username
+ 1. [Description](#description) 
+ 2. [Installation](#installation) 
+ 3. [Usage](#usage) 
+ 4. [License](#license)
+     
+ 5. [Contributing](#contributing) 
+ 6. [Tests](#tests) 
+ 7. [Username](#username) 
 
 # Description
 This project can generate a dynamic HTML page displaying a company's team members, such as a manager, intern, or engineer. These three roles can be re-used as many times as the user wants depending on how many team members they want to add. THey will be prompted questions about the team members such as email, id, role, name, github username, office number, and school depending on their role. The user can then choose to be done and their page will generate. Jest was also used in order to test the functionality of the code. 
